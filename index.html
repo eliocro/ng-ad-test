@@ -1,0 +1,32 @@
+<html>
+<head>
+  <title>NG Ad Test</title>
+</head>
+<body>
+  <script type="text/javascript" src="http://aka-cdn-ns.adtech.de/dt/common/DAC.js"></script>
+  <script>
+    if(window.location.search) {
+      window.adId = parseInt(window.location.search.substr(1)) || 0;
+      document.write('<div id="' + window.adId + '"></div>')
+
+      ADTECH.config.page = {
+        protocol: 'http',
+        server: 'adserver.adtech.de',
+        network: '1497',
+        kv: {
+          rtb: 'false'
+        }
+      };
+      ADTECH.config.placements[window.adId] = {
+        sizeid: '4655',
+        params: {
+          alias: '',
+          target: '_blank'
+        }
+      };
+      ADTECH.enqueueAd(window.adId);
+      ADTECH.executeQueue();
+    }
+  </script>
+</body>
+</html>
